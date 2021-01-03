@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="offset-md-2 col-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Descrizione</th>
+          <th scope="col">Prezzo</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Ops</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of foods; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ food.marca  }}</td>
+          <td>{{ food.descrizione }}</td>
+          <td>{{ food.prezzo + ' euro' }}</td>
+          <td>{{ food.peso + ' ' +food.unitaDiMisura}}</td>
+          <td><button class="btn btn-primary">Modifica</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
