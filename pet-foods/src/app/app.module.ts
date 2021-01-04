@@ -11,6 +11,7 @@ import { TableComponent } from './component/table/table.component';
 import { ChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './component/bar-chart/bar-chart.component';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule }   from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

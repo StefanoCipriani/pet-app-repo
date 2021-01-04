@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { flatten } from "@angular/core/src/render3/util";
 import { ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import * as pluginDataLabels from "chartjs-plugin-datalabels";
 import { Label } from "ng2-charts";
@@ -23,6 +24,7 @@ export class BarChartComponent implements OnInit {
     },
   };
 
+  private isLoaded=false;
   private foodService: FoodService;
   private foods: FoodModel[];
   private mappedData: ChartDataSets[] = [];
@@ -41,7 +43,6 @@ export class BarChartComponent implements OnInit {
   ];*/
 
   public mapComponenti: any = {};
-
   public barChartData: ChartDataSets[] = [
 
   ];
@@ -49,10 +50,22 @@ export class BarChartComponent implements OnInit {
 
   constructor(foodService: FoodService) {
     this.foodService = foodService;
+    this.foods = [];
   }
 
   ngOnInit(): void {
-    this.foods = this.foodService.getFoods();
+    this.foodService.getFoodsFromDBSubscriber().subscribe((res) => {
+      for (let entry of res.data) {
+        this.foods.push(entry);
+      }
+      this.mapFoods();
+        console.log(this.barChartData);
+        this.isLoaded=true;
+    });
+  }
+
+  private mapFoods(){
+    console.log("QUI")
     this.foods.forEach((f) => {
       this.barChartLabels.push(f.marca + " - " + f.descrizione);
       let sum = 0;
@@ -84,7 +97,6 @@ export class BarChartComponent implements OnInit {
       });
     }
 
-    console.log(this.barChartData);
   }
 
   // events
@@ -108,16 +120,4 @@ export class BarChartComponent implements OnInit {
     console.log(event, active);
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.random() * 100,
-      56,
-      Math.random() * 100,
-      40,
-    ];
-  }
 }

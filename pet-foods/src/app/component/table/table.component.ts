@@ -18,7 +18,13 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.foods = this.foodService.getFoods();
+    this.foods = [];
+    this.foodService.getFoodsFromDBSubscriber().subscribe((res) => {
+      for (let entry of res.data) {
+        this.foods.push(entry);
+      }
+    });
+    //this.foods = this.foodService.getFoods();
   }
 
 }
