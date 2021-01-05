@@ -7,7 +7,7 @@ import { ManageFoodComponent } from './component/manage-food/manage-food.compone
 import { NewFoodComponent } from './component/new-food/new-food.component';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
+  {path:'/', component: HomeComponent},
   {path:'new-food', component: NewFoodComponent},
   {path:'manage-food', component: ManageFoodComponent},
   {path:'graphs', component: BarChartComponent}

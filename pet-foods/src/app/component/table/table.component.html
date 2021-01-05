@@ -18,9 +18,24 @@
           <td>{{ food.descrizione }}</td>
           <td>{{ food.prezzo + ' euro' }}</td>
           <td>{{ food.peso + ' ' +food.unitaDiMisura}}</td>
-          <td><button class="btn btn-primary">Modifica</button></td>
+          <td>
+            <button  class="btn btn-primary" (click) ="modal.show(food)">Dettagli</button>
+            <button  style="margin-left:.2em" class="btn btn-primary" (click) ="deleteFood(food.id)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div>
+    <app-modal #modal>
+      <div class="app-modal-header">
+        <h5>Dettagli alimento</h5>
+      </div>
+      <div class="app-modal-body">
+      </div>
+      <div class="app-modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.hide()">Close</button>
+      </div>
+    </app-modal>
   </div>
 </div>

@@ -12,6 +12,8 @@ import { ChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './component/bar-chart/bar-chart.component';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './component/modal/modal.component';
+import { BarchartSingleFoodNoHeaderComponent } from './component/barchart-single-food-no-header/barchart-single-food-no-header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     NewFoodComponent,
     ManageFoodComponent,
     TableComponent,
-    BarChartComponent
+    BarChartComponent,
+    ModalComponent,
+    BarchartSingleFoodNoHeaderComponent
   ],
   imports: [
     BrowserModule,

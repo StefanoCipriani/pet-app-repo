@@ -1,0 +1,26 @@
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'show': visibleAnimate}"
+       [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}"
+       >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <ng-content select=".app-modal-header"></ng-content>
+        </div>
+        <div class="modal-body">
+          <ng-content select=".app-modal-body"></ng-content>
+          <div *ngIf="item">
+            {{item.marca + ' - ' + item.descrizione}}
+            <div>
+              <app-barchart-single-food-no-header [item]="item"></app-barchart-single-food-no-header>
+            </div>
+          </div>
+          <div *ngElse>
+           Caricamento...
+          </div>
+        </div>
+        <div class="modal-footer">
+          <ng-content select=".app-modal-footer"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>

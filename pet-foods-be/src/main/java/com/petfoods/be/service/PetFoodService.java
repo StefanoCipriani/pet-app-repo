@@ -9,5 +9,6 @@ public interface PetFoodService {
 
 	List<FoodModel> getFoods() throws Exception;
 	void insertFood(FoodDto food) throws Exception;
+	void deleteFood(Long id);
 
 }

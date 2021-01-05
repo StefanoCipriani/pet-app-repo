@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import * as pluginDataLabels from "chartjs-plugin-datalabels";
 import { Label } from "ng2-charts";
@@ -6,11 +6,12 @@ import { FoodModel } from "src/app/model/FoodModel";
 import { FoodService } from "src/app/service/food.service";
 
 @Component({
-  selector: "app-bar-chart",
-  templateUrl: "./bar-chart.component.html",
-  styleUrls: ["./bar-chart.component.css"],
+  selector: 'app-barchart-single-food-no-header',
+  templateUrl: './barchart-single-food-no-header.component.html',
+  styleUrls: ['./barchart-single-food-no-header.component.css']
 })
-export class BarChartComponent implements OnInit {
+export class BarchartSingleFoodNoHeaderComponent implements OnInit {
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -24,7 +25,8 @@ export class BarChartComponent implements OnInit {
   };
 
   public isLoaded=false;
-  private foodService: FoodService;
+  @Input('item') item : FoodModel = null;
+
   private foods: FoodModel[];
   private mappedData: ChartDataSets[] = [];
   private data: any = {};
@@ -34,32 +36,19 @@ export class BarChartComponent implements OnInit {
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
 
-  /*
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 15, 30], label: "Proteine" },
-    { data: [28, 12, 33], label: "Vitamine" },
-    { data: [28, 28, 28], label: "Grassi" },
-  ];*/
-
   public mapComponenti: any = {};
   public barChartData: ChartDataSets[] = [
 
   ];
 
-
   constructor(foodService: FoodService) {
-    this.foodService = foodService;
     this.foods = [];
   }
 
   ngOnInit(): void {
-    this.foodService.getFoodsFromDBSubscriber().subscribe((res) => {
-      for (let entry of res.data) {
-        this.foods.push(entry);
-      }
-      this.mapFoods();
-      this.isLoaded=true;
-    });
+    this.foods.push(this.item);
+    this.mapFoods();
+    this.isLoaded=true;
   }
 
   private mapFoods(){

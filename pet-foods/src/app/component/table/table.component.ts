@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FoodModel } from 'src/app/model/FoodModel';
 import { FoodService } from './../../service/food.service';
 
@@ -8,10 +8,10 @@ import { FoodService } from './../../service/food.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 
   private foodService : FoodService;
-  private foods : FoodModel[];
+  foods : FoodModel[];
 
   constructor(foodService : FoodService) {
       this.foodService = foodService;
@@ -19,12 +19,27 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.foods = [];
+    this.getFoods();
+  }
+
+  deleteFood(id:number){
+    this.foodService.deleteFood(id).subscribe((res) => {
+      this.getFoods();
+    });
+
+  }
+
+  getFoods(){
+    this.foods = [];
     this.foodService.getFoodsFromDBSubscriber().subscribe((res) => {
       for (let entry of res.data) {
         this.foods.push(entry);
       }
     });
-    //this.foods = this.foodService.getFoods();
   }
 
+  ngOnDestroy(): void {
+    //unsubscribre
+    //this.foodService.getFoodsFromDBSubscriber()
+  }
 }

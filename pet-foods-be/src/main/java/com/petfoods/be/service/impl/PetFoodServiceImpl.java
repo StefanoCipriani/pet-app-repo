@@ -43,17 +43,28 @@ public class PetFoodServiceImpl implements PetFoodService {
 			fm.setUnitaDiMisura(food.getUnitaDiMisura());
 			
 			List<ComponentiAnaliticiDto> componentiAnaliticiDto = food.getComponentiAnalitici();
-			List<ComponentiAnaliticiModel> componentiAnaliticiModel = componentiAnaliticiDto.stream().map((cDto)->{
-				ComponentiAnaliticiModel cMod = new ComponentiAnaliticiModel();
-				cMod.setFood(fm);
-				cMod.setNome(cDto.getNome());
-				cMod.setNote(cDto.getNote());
-				cMod.setValorePercentuale(cDto.getValorePercentuale());
-				return cMod;
-			})
-			.collect(Collectors.toList());
-			fm.getComponentiAnalitici().addAll(componentiAnaliticiModel);
+				if(componentiAnaliticiDto != null ) {
+				List<ComponentiAnaliticiModel> componentiAnaliticiModel = componentiAnaliticiDto.stream().map((cDto)->{
+					ComponentiAnaliticiModel cMod = new ComponentiAnaliticiModel();
+					cMod.setFood(fm);
+					cMod.setNome(cDto.getNome());
+					cMod.setNote(cDto.getNote());
+					cMod.setValorePercentuale(cDto.getValorePercentuale());
+					return cMod;
+				})
+				.collect(Collectors.toList());
+				fm.getComponentiAnalitici().addAll(componentiAnaliticiModel);
+			}
 			petRepo.save(fm);
+		}catch(Exception  e) {
+			throw e;
+		}
+	}
+	
+	@Override
+	public void deleteFood(Long id) {
+		try {
+			petRepo.deleteById(id);
 		}catch(Exception  e) {
 			throw e;
 		}
