@@ -33,7 +33,7 @@ Prune unused images:
 Create image:
 	docker build --memory=1024m -t pet-food-fe-image .
 Start container
-	docker run --name pet-food-fe-container -d -p 8888:80 pet-food-fe-image
+	docker run --name pet-food-fe-container -d -p 8080:80 pet-food-fe-image
 	
 Access container:
 	docker exec -it pet-food-fe-container sh
