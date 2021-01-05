@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Docker
+Prune unused images:
+	docker image prune -a
+Create image:
+	docker build --memory=1024m -t pet-food-fe-image .
+Start container
+	docker run --name pet-food-fe-container -d -p 8888:80 pet-food-fe-image
+	
+Access container:
+	docker exec -it pet-food-fe-container sh
+Stop container:
+	docker stop pet-food-fe-container
+Remove container
+	docker rm pet-food-fe-container
