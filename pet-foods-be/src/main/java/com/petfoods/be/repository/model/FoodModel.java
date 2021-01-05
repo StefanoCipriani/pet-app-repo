@@ -20,8 +20,8 @@ public class FoodModel {
 	private Long id;
 	private String marca; 
 	private String descrizione;
-	private Long prezzo;
-	private Long peso;
+	private Double prezzo;
+	private Double peso;
 	private String unitaDiMisura;
 	
 	@OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -45,16 +45,16 @@ public class FoodModel {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public Long getPrezzo() {
+	public Double getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(Long prezzo) {
+	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public Long getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
-	public void setPeso(Long peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 	public String getUnitaDiMisura() {

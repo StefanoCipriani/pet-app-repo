@@ -5,7 +5,7 @@ public class ComponentiAnaliticiDto {
 	private Long id;
 	private Long food_id;
 	private String nome;
-	private Long valorePercentuale;
+	private Double valorePercentuale;
     private String note;
     
 	public Long getId() {
@@ -26,10 +26,10 @@ public class ComponentiAnaliticiDto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Long getValorePercentuale() {
+	public Double getValorePercentuale() {
 		return valorePercentuale;
 	}
-	public void setValorePercentuale(Long valorePercentuale) {
+	public void setValorePercentuale(Double valorePercentuale) {
 		this.valorePercentuale = valorePercentuale;
 	}
 	public String getNote() {

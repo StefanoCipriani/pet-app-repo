@@ -21,7 +21,7 @@ public class ComponentiAnaliticiModel {
 	@ManyToOne
 	private FoodModel food;
 	private String nome;
-	private Long valorePercentuale;
+	private Double valorePercentuale;
     private String note;
     
 	public FoodModel getFood() {
@@ -36,10 +36,10 @@ public class ComponentiAnaliticiModel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Long getValorePercentuale() {
+	public Double getValorePercentuale() {
 		return valorePercentuale;
 	}
-	public void setValorePercentuale(Long valorePercentuale) {
+	public void setValorePercentuale(Double valorePercentuale) {
 		this.valorePercentuale = valorePercentuale;
 	}
 	public String getNote() {
