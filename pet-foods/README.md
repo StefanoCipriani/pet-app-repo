@@ -28,16 +28,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Docker
-Prune unused images:
+* Prune unused images:
 	docker image prune -a
-Create image:
+* Create image:
 	docker build --memory=1024m -t pet-food-fe-image .
-Start container
+* Start container
 	docker run --name pet-food-fe-container -d -p 8080:80 pet-food-fe-image
 	
-Access container:
+* Access container:
 	docker exec -it pet-food-fe-container sh
-Stop container:
+* Stop container:
 	docker stop pet-food-fe-container
-Remove container
+* Remove container
 	docker rm pet-food-fe-container
