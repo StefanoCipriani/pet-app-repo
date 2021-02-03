@@ -41,3 +41,4 @@ Stop container:
 	docker stop pet-food-fe-container
 Remove container
 	docker rm pet-food-fe-container
+	
