@@ -6,5 +6,6 @@
 * create database petfood_db;
 * docker build -t pet-food-be-img .
 * docker run --name pet-food-be-container -p 8091:8091 pet-food-be-img
+* docker run --name pet-food-be-container -e MYSQL_HOST=192.168.1.203 -p 8091:8091 pet-food-be-img
 * docker stop pet-food-be-container
 * docker rm pet-food-be-container
