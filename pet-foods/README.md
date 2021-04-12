@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Docker
-* Prune unused images:
+* Prune unused images (Attention it will remove all images):
 	docker image prune -a
 * Create image:
 	docker build --memory=1024m -t pet-food-fe-image .
@@ -41,3 +41,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 	docker stop pet-food-fe-container
 * Remove container
 	docker rm pet-food-fe-container
+
+
+##Access application
+http://localhost:8080/pet-foods/
