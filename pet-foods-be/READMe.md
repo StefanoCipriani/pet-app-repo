@@ -9,3 +9,7 @@
 * docker run --name pet-food-be-container -e MYSQL_HOST=192.168.1.203 -p 8091:8091 pet-food-be-img
 * docker stop pet-food-be-container
 * docker rm pet-food-be-container
+
+## Kubernates build
+Follow the steps in ./kubernates/commands.txt
+You must update the secret for mysql host basing on the services url exposed in you environment

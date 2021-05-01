@@ -20,4 +20,7 @@ kubectl.exe describe svc pet-foods-be-db-service
 minikube service pet-foods-be-db-service
 #create backend
 kubectl.exe create -f .\pet-foods-be-deployment.yml
-
+#create backend service
+kubectl.exe create -f .\pet-foods-service.yml
+#get url for the service
+minikube service pet-foods-be-service
