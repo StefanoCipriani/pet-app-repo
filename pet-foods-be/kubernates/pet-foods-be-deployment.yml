@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-foods-be-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pet-foods-be
+  template:
+    metadata:
+      labels:
+        app: pet-foods-be
+    spec:
+      containers:
+      - name: pet-foods-be-container
+        image: stefanocipriani/pet-foods-be-img
+        ports:
+        - name: petbeport
+          containerPort: 8091
+        env:
+          - name: MYSQL_HOST
+            valueFrom:
+              secretKeyRef:
+                name: petfood-db-secrets
+                key: db-host  
+          

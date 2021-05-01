@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-foods-be-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pet-foods-be-db
+  template:
+    metadata:
+      labels:
+        app: pet-foods-be-db
+    spec:
+      containers:
+      - name: pet-foods-be-db-container
+        image: mysql:5.7
+        ports:
+        - name: mysql-port
+          containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: petfood-db-secrets
+                key: db-user
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: petfood-db-secrets
+                key: db-password
+

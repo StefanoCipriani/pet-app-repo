@@ -1,0 +1,23 @@
+#if docker does not start
+cd "C:\Program Files\Docker\Docker"
+./DockerCli.exe -SwitchDaemon
+#local environment  
+minikube start --driver=docker
+#or on powershell run in administration mode
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+minikube start
+minikube start --driver=hyperv
+minikube config set driver hyperv
+#create secrets for db 
+kubectl.exe create -f .\pet-foods-db-secrets.yml
+#create db
+kubectl.exe create -f .\pet-foods-be-db-deployment.yml
+#create db service
+kubectl.exe create -f .\pet-foods-db-service.yml
+#describe service
+kubectl.exe describe svc pet-foods-be-db-service
+#get dbservice exposed url on minikube 
+minikube service pet-foods-be-db-service
+#create backend
+kubectl.exe create -f .\pet-foods-be-deployment.yml
+

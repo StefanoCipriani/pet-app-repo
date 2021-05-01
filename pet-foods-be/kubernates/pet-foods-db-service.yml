@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pet-foods-be-db-service
+spec:
+  ports:
+  - port: 31002
+    nodePort: 31002
+    targetPort: mysql-port
+    protocol: TCP
+  selector:
+    app: pet-foods-be-db
+  type: NodePort
